@@ -35,24 +35,7 @@
     <div class="contact-form-area section-padding">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <h4 class="contact-title">Contact</h4>
-            <div class="contact-text">
-            	<!-- <p><span class="c-icon"><i class="zmdi zmdi-account-box  "></i></span><span class="c-text">{$system.contacts}</span></p> -->
-            	<p><span class="c-icon"><i class="zmdi zmdi-smartphone-iphone"></i></span><span class="c-text">{$system.mobile_phone}</span></p>
-              <p><span class="c-icon"><i class="zmdi zmdi-phone-forwarded"></i></span><span class="c-text">{$system.tel}</span></p>
-              <p><span class="c-icon"><i class="fas fa-fax"></i></span><span class="c-text">{$system.fax}</span></p>
-              <p><span class="c-icon"><i class="zmdi zmdi-email"></i></span><span class="c-text">{$system.email}</span></p>
-              <p><span class="c-icon"><i class="zmdi zmdi-pin"></i></span><span>{$system.address}</span></p>
-            </div>
-            <!-- <h4 class="contact-title">Share</h4>
-            <div class="link-social">
-                <a href="tencent://message/?uin={$system.qq}&Site=SuperNic&Menu=yes"><i class="fa fa-qq"></i></a>
-                <a href="https://weibo.com/"><i class="fa fa-weibo"></i></a>
-                <a href="#"><i class="fa fa-weixin"></i></a>
-            </div> -->
-        </div>
-          <div class="col-md-7">
+          <div class="col-md-11">
     <div class="baidu-map-area section-padding" id="map"></div>
           </div>
         </div>
@@ -102,6 +85,58 @@
     }
 
     </style>
+    <div class="contact-form-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="contact-title">Contact</h4>
+                    <div class="contact-text">
+                    	<!-- <p><span class="c-icon"><i class="zmdi zmdi-account-box  "></i></span><span class="c-text">{$system.contacts}</span></p> -->
+                    	<p><span class="c-icon"><i class="zmdi zmdi-smartphone-iphone"></i></span><span class="c-text">{$system.mobile_phone}</span></p>
+                      <p><span class="c-icon"><i class="zmdi zmdi-phone-forwarded"></i></span><span class="c-text">{$system.tel}</span></p>
+                      <p><span class="c-icon"><i class="fas fa-fax"></i></span><span class="c-text">{$system.fax}</span></p>
+                      <p><span class="c-icon"><i class="zmdi zmdi-email"></i></span><span class="c-text">{$system.email}</span></p>
+                      <p><span class="c-icon"><i class="zmdi zmdi-pin"></i></span><span>{$system.address}</span></p>
+                    </div>
+                    <!-- <h4 class="contact-title">Share</h4>
+                    <div class="link-social">
+                        <a href="tencent://message/?uin={$system.qq}&Site=SuperNic&Menu=yes"><i class="fa fa-qq"></i></a>
+                        <a href="https://weibo.com/"><i class="fa fa-weibo"></i></a>
+                        <a href="#"><i class="fa fa-weixin"></i></a>
+                    </div> -->
+                </div>
+                <div class="col-md-7">
+                    <h4 class="contact-title">Online Message</h4>
+                    <form id="contact-form" action="{:url('index/add')}" method="post">
+                        <div class="row">
+                        	<div class="col-md-12">
+                                <input type="text" name="title" placeholder="Subject">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="name" placeholder="My Name">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="phone" placeholder="My Phone Number">
+                            </div>
+                            {if $system.message_code}
+                            <div class="clearfix"></div>
+                            <div class="col-md-6 message_code">
+                            	<input type="text" name="message_code" placeholder="captcha">
+                            	<img src="{:url('index/captcha')}" title="Click to switch the captcha">
+                            </div>
+                            {/if}
+                            <div class="col-md-12">
+                                <textarea name="content" cols="30" rows="10" placeholder="Content"></textarea>
+                                <input type="hidden" name="cate_id" value="{$cate.id}">
+                                <button type="submit" class="button-default">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="form-messege"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--End of Contact Area-->
     
     <!--文章列表-->
