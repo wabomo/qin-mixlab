@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+  <title>{$title}_{$system.name}</title> 
+  <meta name="keywords" content="{$keywords}" /> 
+  <meta name="description" content="{$description}" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" /> 
+  <link rel="shortcut icon" type="image/x-icon" href="{$public}img/favicon.ico" /> 
+  {include file="common/css"/}
+  <!--mix_common_css.html-->
+  {include file="mix/common/css"/} 
+ </head> 
+ <body> 
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]--> 
+  <!--Main Wrapper Start--> 
+  <div class="as-mainwrapper"> 
+   <!--Bg White Start--> 
+   <div class="bg-white"> 
+    <!--Header Area Start--> 
+    {include file="common/header"/} 
+    <!--End of Header Area--> 
+    <!--Breadcrumb Banner Area Start-->
+    {include file="common/banner"/} 
+    <!--End of Breadcrumb Banner Area-->
+    <!--Little Nav Start-->
+    <!--
+    {include file="common/nav"/} 
+    -->
+    <!--End of Little Nav-->
+        
+    <div class="latest-area section-padding latest-page">
+        <div class="container">
+
+<!--
+            <div class="row">
+                <div class="col-md-11 col-sm-12">
+                    <h1>Lab Members</h1>
+                </div>
+            </div>
+
+            {tp:list name="list" limit="100"}
+            <div class="row">
+                <div class="col-md-11 col-sm-12">
+                    <div class="mix-team-h1">
+                        {$list.name}
+                    </div>
+                    <div class="mix-team-h2">
+                        {$list.title}
+                    </div>
+                    <div class="mix-team-body">
+                        {if !empty($list.image)}
+                        <div class="mix-team-floatleft">
+                            <img src="{$list.image}"/>
+                        </div>
+                        {/if}
+                        {$list.content|raw}
+                    </div>
+                </div>
+            </div>
+            {if $list.sort==0}
+            <div class="row">
+                <div class="col-md-11 col-sm-12">
+                    <div class="mix-team-h1 mix-team-hr">
+                        <h3 class="">Postdoctoral Fellows and Postgraduate Trainees</h3>
+                    </div>
+                </div>
+            </div>
+            {/if}
+            {/tp:list}
+-->
+        <?php $current_team_person_category=-1; ?>
+        {tp:list name="list" where="team_person_category!=5" limit="9999" order="team_person_category,sort,id DESC" }
+            {if $current_team_person_category!=$list.team_person_category}
+                {tp:dict name="tpc" dict_type="13"}
+                    {if $key!=0 and $list.team_person_category==$tpc.dict_value}
+                        <div class="row"  {if $current_team_person_category!=-1}style="margin-top:1.5em;"{/if}>
+                            <div class="col-md-11 col-sm-12">
+                                <div class="mix-team-h1 mix-team-hr" style="margin-top:0;background-color:#7B1D84;color:#FFFFFF;">
+                                <!--<div class="mix-team-h1 mix-team-hr" style="margin-top:0;background-color:#663366;color:#FFFFFF;">-->
+                                <!--<div class="mix-team-h1 mix-team-hr" style="background-color:#9999CC;color:#FFFFFF;"> -->
+                                    <h3>{$tpc.dict_label}</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <?php $current_team_person_category=$list['team_person_category']; ?>
+                    {/if}
+                {/tp:dict}
+                
+            {/if}
+            <div class="row">
+                <div class="col-md-11 col-sm-12">
+                    <div class="mix-team-h1">
+                        {$list.name}
+                    </div>
+                    <!--
+                    <div class="mix-team-h2">
+                            {$list.title}
+                    </div>
+                    -->
+                    <div class="mix-team-body">
+                        {if !empty($list.image)}
+                        <div class="mix-team-floatleft">
+                            <img src="{$list.image}"/>
+                        </div>
+                        {/if}
+                        {$list.content|raw}
+                    </div>
+                </div>
+            </div>
+        {/tp:list}
+
+        </div>
+    </div>
+    
+    {include file="common/footer"/}
+   </div> 
+   <!--End of Bg White--> 
+  </div> 
+  <!--End of Main Wrapper Area--> 
+  {include file="common/js"/}
+ </body>
+</html>

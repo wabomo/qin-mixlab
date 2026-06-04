@@ -1,0 +1,59 @@
+	<!--Footer Widget Area Start--> 
+    <div class="footer-widget-area"> 
+     <div class="container"> 
+      <div class="row"> 
+
+       <div class="col-md-6 col-sm-8"> 
+        <div class="single-footer-widget"> 
+         <h1>{$system.name}</h1>
+         <br/>
+         <!-- <p>{$system.des}</p>  -->
+         <a target="_blank"href="https://map.baidu.com/search/%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E9%99%A2%E6%B7%B1%E5%9C%B3%E5%85%88%E8%BF%9B%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2/@12690118.225,2567303.92,19z?querytype=s&da_src=shareurl&wd=%E4%B8%AD%E5%9B%BD%E7%A7%91%E5%AD%A6%E9%99%A2%E6%B7%B1%E5%9C%B3%E5%85%88%E8%BF%9B%E6%8A%80%E6%9C%AF%E5%AD%A6%E9%99%A2&c=340&src=0&pn=0&sug=0&l=13&b=(12663471,2555157;12723087,2585685)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&device_ratio=2">
+          <span><i class="fa fa-map-marker"></i>{$system.address}</span>
+         </a> 
+         {if $system.tel!=''}
+         <a href="tel:{$system.tel}"><i class="fa fa-phone"></i>{$system.tel}</a> 
+         {/if}
+         {if $system.mobile_phone!=''}
+         <a href="tel:{$system.mobile_phone}"><i class="fa fa-mobile"></i>{$system.mobile_phone}</a> 
+         {/if}
+         {if $system.email!=''}
+         <a href="mailto:{$system.email}"><span><i class="fa fa-envelope"></i>{$system.email}</span></a>
+         {/if}
+         <!---->
+         {if $system.url!=''}
+         <a target="_blank" href="{$system.url}"><span><i class="fa fa-globe"></i>{$system.url}</span></a>
+         {/if}
+        </div> 
+       </div> 
+       
+       <div class="col-md-6 col-sm-4"> 
+        <div class="single-footer-widget"> 
+         <div class="instagram-image">   
+          <div class="footer-logo">
+            <a href="/"><img src="{$system.qrcode}" /></a>
+          </div>         
+         </div> 
+        </div> 
+       </div> 
+
+      </div> 
+     </div> 
+    </div> 
+    <!--End of Footer Widget Area--> 
+    <!--Footer Area Start--> 
+    <footer class="footer-area"> 
+     <div class="container"> 
+      <div class="row"> 
+       <div class="col-md-6 col-sm-7"> 
+        <span style="color:#6d1c9a;">{$system.copyright}</span> 
+       </div> 
+       <div class="col-md-6 col-sm-5"> 
+        <div class="column-right"> 
+          <span>备案号：<a href="https://beian.miit.gov.cn/">{$system.icp}</a></span> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </footer> 
+    <!--End of Footer Area--> 

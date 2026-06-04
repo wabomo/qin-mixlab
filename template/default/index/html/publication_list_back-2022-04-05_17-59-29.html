@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+ <head> 
+  <meta charset="utf-8" /> 
+  <meta http-equiv="x-ua-compatible" content="ie=edge" /> 
+  <title>{$title}_{$system.name}</title> 
+  <meta name="keywords" content="{$keywords}" /> 
+  <meta name="description" content="{$description}" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" /> 
+  <link rel="shortcut icon" type="image/x-icon" href="{$public}img/favicon.ico" /> 
+  {include file="common/css"/}
+  <!--mix_common_css.html-->
+  {include file="mix/common/css"/} 
+ </head> 
+ <body> 
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]--> 
+  <!--Main Wrapper Start--> 
+  <div class="as-mainwrapper"> 
+   <!--Bg White Start--> 
+   <div class="bg-white"> 
+    <!--Header Area Start--> 
+    {include file="common/header"/} 
+    <!--End of Header Area--> 
+    <!--Breadcrumb Banner Area Start-->
+    {include file="common/banner"/} 
+    <!--End of Breadcrumb Banner Area-->
+    <!--Little Nav Start-->
+    {include file="common/nav"/} 
+    <!--End of Little Nav-->
+
+    <div class="latest-area section-padding latest-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h1>Publications</h1>
+                </div>
+            </div>
+            <br/>
+        <?php $pub_sum=-1; ?>
+        {tp:list name="pub"  limit="9999" order="year DESC,sort,id DESC" }
+        <?php $pub_sum=$key+1;?>
+        {/tp:list}
+            <?php 
+            $year_list =[];
+            for ($t_i=2050; $t_i > 1900; $t_i--) { 
+                $year_list[]=$t_i;
+            }
+            ?>
+            <?php $current_year=-1; ?>
+            <?php $pub_key=-1; ?>
+        {tp:list name="pub"  limit="9999" order="year DESC,sort,id DESC" }
+            <?php $pub_key=$key; ?>
+            {if $current_year!=$pub.year}
+                {volist name="$year_list" id="v" key="kk"}
+                    {if $pub.year==$v}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mix-publication-h1">{$pub.year} Publications</div>
+                            </div>
+                        </div>
+                        <?php $current_year=$pub['year']; ?>
+                    {/if}
+                {/volist}
+            {/if}
+            <div class="row">
+                <br/>
+                <div class="col-md-11 col-sm-12">
+                    <div style="margin-left:10px;">
+                        <span style="font-weight:bold;">{$pub_sum-$pub_key}</span>.
+                        {if $pub.publication_file==""}
+                            <span style="font-size:bold;">
+                        {else}
+                            <a href="{$pub.publication_file}"target="_blank"class="mix-publication-a"style="font-size:bold;">
+                        {/if}
+                        {$pub.author|raw},{$pub.title|raw},{$pub.journal_name|raw},{if $pub.journal_info!=""}{$pub.journal_info|raw},{/if}
+                        {if $pub.publication_file==""}
+                        </span>
+                        {else}
+                        </a>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        {/tp:list}
+            
+            <!--
+            {tp:list name="pub" where="year<=2019" order="year DESC,sort ASC,id DESC" }
+            <div class="row">
+                <div class="col-md-11 col-sm-12">
+                    <br/>
+                    <div class="mix-publication-h1">
+                        {$key+1}.
+                        {if $pub.publication_file==""}
+                        <a href="{$pub.url}" target="_blank" class="mix-publication-a">{$pub.title}</a>
+                        <span class="mix-publication-a">{$pub.title}</span>
+                        {else}
+                        <a href="{$pub.publication_file}" target="_blank" class="mix-publication-a">{$pub.title}</a>
+                        {/if}
+                    </div>
+                    <div class="mix-publication-body">
+                        {$pub.author},{$pub.journal_name},{$pub.journal_info}, ({$pub.year})
+                    </div>
+                </div>
+            </div>
+            {/tp:list}
+            -->
+            <!--
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pagination-content number">
+                    	{$page|raw}
+                    </div>
+                </div>
+            </div>
+            -->
+
+        </div>
+    </div>
+
+    
+    {include file="common/footer"/}
+   </div> 
+   <!--End of Bg White--> 
+  </div> 
+  <!--End of Main Wrapper Area--> 
+  {include file="common/js"/}
+ </body>
+</html>
